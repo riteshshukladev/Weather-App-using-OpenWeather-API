@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Material UI -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+
+<body>
+    <div id="container">
+        <section id="main-section">
+            <div class="main-content">
+                <h1 class="temp"></h1>
+                <div class="city-and-time">
+                    <h2 class="city"></h2>
+                    <div class="day-and-time">
+                        <p class="day"><span></span>-</p>
+                        <p class="date"><span></span>-</p>
+                        <p class="time"><span></span></p>
+                    </div>
+                </div>
+                <div class="weather">
+                    <span class="weather-icons">
+                        <img src="">
+                    </span>
+                    <p class="weather-type"></p>
+                </div>
+            </div>
+
+        </section>
+        <section id="search-detail-section">
+            <div id="search">
+                <div class="input">
+                    <input type="text" name="" id="input_city" placeholder="another location">
+                    <span class="material-symbols-outlined btn">
+                        search
+                    </span>
+                </div>
+                <div class="error-area">
+                    <h5></h5>
+                </div>
+                <div class="common-cities">
+                    <a href="#" class="cities">Delhi</a>
+                    <a href="#" class="cities">Banglore</a>
+                    <a href="#" class="cities">Beijing</a>
+                    <a href="#" class="cities">Sydney</a>
+                </div>
+            </div>
+            <div id="weather-details">
+                <h6>Weather Details</h6>
+                <div class="details">
+                    <table>
+                        <tr>
+                            <td class="cloudy">Cloud</td>
+                            <td class="cloudy-data"></td>
+                        </tr>
+                        <tr>
+                            <td class="humid">Humidity</td>
+                            <td class="humid-data"></td>
+                        </tr>
+                        <tr>
+                            <td class="wind">Wind</td>
+                            <td class="wind-data"></td>
+                        </tr>
+                        <tr>
+                            <td class="rain">Rain</td>
+                            <td class="rain-data"></td>
+                        </tr>
+                        <tr>
+                            <td class="visible">Visibilty</td>
+                            <td class="visibility-data"></td>
+                        </tr>
+                        <tr>
+                            <td class="snow">SnowFall</td>
+                            <td class="snow-data"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
