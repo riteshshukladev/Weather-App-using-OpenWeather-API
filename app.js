@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupcityListner();
 });
 
-// Rest of the code remains the same.
+
 
 // Getting the name of the city and passing the longitude and lattitude to the fetch the weather details//
 const clickbtn = document.querySelector('.btn').addEventListener('click', loctnid);
