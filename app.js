@@ -153,26 +153,26 @@ function weathericon(code) {
     61: { weather: "Light rain", backgroundImage: "/icon/light-rain.png" },
     63: { weather: "Moderate rain", backgroundImage: "/icon/moderate-rain.png" },
     65: { weather: "Heavy rain", backgroundImage: "/icon/heavy-rain.png" },
-    71: { weather: "Light snow shower", backgroundImage: "/icon/light snow.png" },
-    73: { weather: "Moderate snow shower", backgroundImage: "/icon/moderate snow.png" },
-    75: { weather: "Heavy snow shower", backgroundImage: "/icon/snow.png" },
-    77: { weather: "Light snow", backgroundImage: "/icon/light snow.png" },
+    71: { weather: "Light snow shower", backgroundImage: "/icon/snow-shower.png" },
+    73: { weather: "Moderate snow shower", backgroundImage: "/icon/snow-shower.png" },
+    75: { weather: "Heavy snow shower", backgroundImage: "/icon/snow-shower.png" },
+    77: { weather: "Light snow", backgroundImage: "/icon/snow.png" },
     80: { weather: "Slight rain shower", backgroundImage: "/icon/light-rain.png" },
     81: { weather: "Moderate rain shower", backgroundImage: "/icon/moderate rain.png" },
 
     82: { weather: "Heavy rain shower", backgroundImage: "/icon/heavy-rain.png" },
-    85: { weather: "Light snow shower", backgroundImage: "/icon/light snow.png" },
+    85: { weather: "Light snow shower", backgroundImage: "/icon/snow-shower.png" },
     86: { weather: "Heavy snow shower", backgroundImage: "/icon/snow.png" },
-    95: { weather: "Thunderstorm", backgroundImage: "/icon/thunderstorm.png" },
-    96: { weather: "Thunderstorm with slight rain", backgroundImage: "/icon/thunderstorm-with-rain.png" },
-    99: { weather: "Thunderstorm with heavy rain", backgroundImage: "/icon/thunderstorm-with-rain.png" },
+    95: { weather: "Thunderstorm", backgroundImage: "/icon/thunder.png" },
+    96: { weather: "Thunderstorm with slight rain", backgroundImage:"/icon/thunderstorm-rain"},
+    99: { weather: "Thunderstorm with heavy rain", backgroundImage: "/icon/thunderstorm-rain.png" }
   };
   const weatherData = icon[code];
   if (weatherData) {
     document.querySelector('.weather-icons img').src = `${weatherData.backgroundImage}`;
   }
 }
-// Function to update the child elements with current date, time, and day in a specific timezone
+
 
 function updateDateTimeWithTimezone(timezone) {
   const parent = document.querySelector('.day-and-time');
@@ -181,19 +181,24 @@ function updateDateTimeWithTimezone(timezone) {
   const options = {
     hour: 'numeric',
     minute: 'numeric',
+    hour12: true, 
     timeZone: `${timezone}`,
   };
 
   const timeString = date.toLocaleString('en-US', options);
-  const timeRegex = /\d{1,2}:\d{2}\s[AP]M/;
-  const time = timeString.match(timeRegex)[0];
 
-  const day = date.toLocaleString('en-US', { weekday: 'long' });
-  const month = date.toLocaleString('en-US', { month: 'long' });
+  const day = date.toLocaleString('en-US', { weekday: 'short' });
+  const month = date.toLocaleString('en-US', { month: 'short' });
   const dateOfMonth = date.toLocaleString('en-US', { day: 'numeric' });
   const year = date.toLocaleString('en-US', { year: 'numeric' });
 
-  parent.querySelector('.day').textContent = day + "-";
-  parent.querySelector('.date').textContent = `${month} ${dateOfMonth} ${year}` + "-";
-  parent.querySelector('.time').textContent = time;
+  const [formattedTime, amPm] = timeString.split(' ');
+
+  const outputString = `${day} ${month}-${dateOfMonth}-${year} ${formattedTime}${amPm}`;
+
+  parent.textContent = outputString;
 }
+
+
+
+
