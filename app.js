@@ -6,7 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // Getting the name of the city and passing the longitude and lattitude to the fetch the weather details//
-const clickbtn = document.querySelector('.btn').addEventListener('click', loctnid);
+// const clickbtn = document.querySelector('.btn').addEventListener('click', loctnid);
+
+const city_input = document.querySelector('#input_city').addEventListener('input', ()=>{
+  clickbtn = document.querySelector('.btn').addEventListener('click', loctnid);
+});
 
 // Adding the feature that if user selects the given city whose names are provided then search for them.
 
@@ -20,10 +24,8 @@ function selectionfromgivencities() {
   document.querySelector('#input_city').value = this.innerText;
   const apikey = "d0fa0e2fa5e7452f908c3a10bc16a9ec";
   const city_name = this.innerText;
-  const clickbtn = document.querySelector('.btn').addEventListener('click', () => {
-    fetchCityWeather(apikey, city_name);
+  fetchCityWeather(apikey, city_name);
 
-  });
 }
 
 
@@ -79,10 +81,10 @@ async function getweather(latitude, longitude) {
       [0]} km/h`;
       document.querySelector('.rain-data').innerHTML = `${data.hourly.rain[0]} mm`;
       document.querySelector('.visibility-data').innerHTML = `${data.hourly.visibility[0]} m`;
+      document.querySelector('.snow-data').innerHTML = `${data.hourly.snowfall[0]} cm`;
       weathercode(data.hourly.weathercode[0]);
       weathericon(data.hourly.weathercode[0]);
       updateDateTimeWithTimezone(data.timezone);
-      document.querySelector('.snow-data').innerHTML = `${data.hourly.snowfall[0]} cm`;
     })
     .catch(err => {
       console.error("error fetching data", err);
@@ -92,37 +94,36 @@ async function getweather(latitude, longitude) {
 // This are the weather codes and the background images for the weather codes
 // This weathercode is official weather code from open-meteo.com
 // This weathercode helps in finding the weather-condition 
-
 function weathercode(code) {
   let weatherInfo = {
-    1: { weather: "Sunny", backgroundImage: "/images/sunny.jpg" },
-    2: { weather: "Clear", backgroundImage: "/images/sunny.jpg" },
-    3: { weather: "Partly cloudy", backgroundImage: "/images/party_cloud.jpg" },
-    4: { weather: "Overcast", backgroundImage: "/images/overcast.jpg" },
-    45: { weather: "Fog", backgroundImage: "/images/fog.jpg" },
-    48: { weather: "Fog", backgroundImage: "/images/fog.jpg" },
-    51: { weather: "Light rain shower", backgroundImage: "/images/light_rain.jpg" },
-    53: { weather: "Moderate rain shower", backgroundImage: "/images/light_rain.jpg" },
-    55: { weather: "Heavy rain shower", backgroundImage: "/images/rainy.jpg" },
-    56: { weather: "Freezing rain shower", backgroundImage: "/images/freezing_rain.jpg" },
-    66: { weather: "Freezing rain shower", backgroundImage: "/images/freezing_rain.jpg" },
-    57: { weather: "Moderate freezing rain shower", backgroundImage: "/images/freezing_rain.jpg" },
-    67: { weather: "Moderate freezing rain shower", backgroundImage: "/images/freezing_rain.jpg" },
-    61: { weather: "Light rain", backgroundImage: "/images/light_rain.jpg" },
-    63: { weather: "Moderate rain", backgroundImage: "/images/rainy.jpg" },
-    65: { weather: "Heavy rain", backgroundImage: "/images/rainy.jpg" },
-    71: { weather: "Light snow shower", backgroundImage: "/images/snow_shower.jpg" },
-    73: { weather: "Moderate snow shower", backgroundImage: "/images/snow_shower.jpg" },
-    75: { weather: "Heavy snow shower", backgroundImage: "/images/snow_shower_heavy.jpg" },
-    77: { weather: "Light snow", backgroundImage: "/images/light_snow.jpg" },
-    80: { weather: "Slight rain shower", backgroundImage: "/images/light_rain.jpg" },
-    81: { weather: "Moderate rain shower", backgroundImage: "/images/rain_shower.jpg" },
-    82: { weather: "Heavy rain shower", backgroundImage: "/images/rain_shower heavy.jpg" },
-    85: { weather: "Light snow shower", backgroundImage: "/images/snow_shower.jpg" },
-    86: { weather: "Heavy snow shower", backgroundImage: "/images/snow_shower_heavy.jpg" },
-    95: { weather: "Thunderstorm", backgroundImage: "/images/thunderstorm.jpg" },
-    96: { weather: "Thunderstorm with slight rain", backgroundImage: "/images/thunderstorm_with_rain.jpg" },
-    99: { weather: "Thunderstorm with heavy rain", backgroundImage: "/images/thunderstorm_with_rain.jpg" },
+    1: { weather: "Sunny", backgroundImage:"images/sunny1.png" },
+    2: { weather: "Clear", backgroundImage: "/images/clear-weather.png" },
+    3: { weather: "Partly cloudy", backgroundImage: "/images/partly-cloudy.png" },
+    4: { weather: "Overcast", backgroundImage: "/images/overcast1.png" },
+    45: { weather: "Fog", backgroundImage: "/images/foggy-weather.png" },
+    48: { weather: "Fog", backgroundImage: "/images/foggy-weather.png" },
+    51: { weather: "Light rain shower", backgroundImage: "/images/light-rain.png" },
+    53: { weather: "Moderate rain shower", backgroundImage: "/images/moderate-rain.png" },
+    55: { weather: "Heavy rain shower", backgroundImage: "/images/heavy-rain-shower.png" },
+    56: { weather: "Freezing rain shower", backgroundImage: "/images/freezing-rain-shower.png" },
+    66: { weather: "Freezing rain shower", backgroundImage: "/images/freezing-rain-shower.png" },
+    57: { weather: "Moderate freezing rain shower", backgroundImage: "/images/heavy-freezing-rain-shower.png" },
+    67: { weather: "Moderate freezing rain shower", backgroundImage: "/images/heavy-freezing-rain-shower.png" },
+    61: { weather: "Light rain", backgroundImage: "/images/light-rain.png" },
+    63: { weather: "Moderate rain", backgroundImage: "/images/moderate-rain.png" },
+    65: { weather: "Heavy rain", backgroundImage: "/images/heavy-rain.png" },
+    71: { weather: "Light snow shower", backgroundImage: "/images/light-snow-shower.png" },
+    73: { weather: "Moderate snow shower", backgroundImage: "/images/moderate-snow-shower.png" },
+    75: { weather: "Heavy snow shower", backgroundImage: "/images/snow-snow-shower.png" },
+    77: { weather: "Light snow", backgroundImage: "/images/light-snow-shower.png" },
+    80: { weather: "Slight rain shower", backgroundImage: "/images/light-rain.png" },
+    81: { weather: "Moderate rain shower", backgroundImage: "/images/moderate-rain.png" },
+    82: { weather: "Heavy rain shower", backgroundImage: "/images/heavy-rain-shower.png" },
+    85: { weather: "Light snow shower", backgroundImage: "/images/light-snow-shower.png" },
+    86: { weather: "Heavy snow shower", backgroundImage: "/images/snow-snow-shower.png" },
+    95: { weather: "Thunderstorm", backgroundImage: "/images/thunderstorm.png" },
+    96: { weather: "Thunderstorm with slight rain", backgroundImage: "/images/thunderstorm-with-rain.png" },
+    99: { weather: "Thunderstorm with heavy rain", backgroundImage: "/images/thunderstormn.png" },
   };
 
   const weatherData = weatherInfo[code];
@@ -131,6 +132,9 @@ function weathercode(code) {
     document.querySelector('#container').style.backgroundImage = `url(${weatherData.backgroundImage})`;
   }
 }
+
+
+
 function weathericon(code) {
   const icon = {
     1: { weather: "Sunny", backgroundImage: "/icon/sunny.png" },
