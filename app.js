@@ -20,11 +20,11 @@ function setupcityListner() {
     city.addEventListener('click', selectionfromgivencities);
   });
 }
-function selectionfromgivencities() {
+async function selectionfromgivencities() {
   document.querySelector('#input_city').value = this.innerText;
   const apikey = "d0fa0e2fa5e7452f908c3a10bc16a9ec";
   const city_name = this.innerText;
-  fetchCityWeather(apikey, city_name);
+  await fetchCityWeather(apikey, city_name);
 
 }
 
@@ -32,7 +32,7 @@ function selectionfromgivencities() {
 async function loctnid() {
   const apikey = "d0fa0e2fa5e7452f908c3a10bc16a9ec";
   const city_name = document.querySelector('#input_city').value;
-  fetchCityWeather(apikey, city_name);
+  await fetchCityWeather(apikey, city_name);
 }
 
 
