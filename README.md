@@ -35,6 +35,7 @@ Weather App is a user-friendly web application that allows users to easily acces
 - CSS3
 - JavaScript (ES6+)
 - OpenWeather API
+-Webpick.com (for Background Images)
 
 ## Future Enhancements
 
