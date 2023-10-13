@@ -1,5 +1,6 @@
 :root {
     --grey: rgb(106, 101, 101);
+    --black:rgb(0, 0, 0);
 }
 
 /* Utility class */
@@ -90,6 +91,9 @@ body {
     backdrop-filter: blur(10px);
     padding: 30px;
 }
+#search-detail-section .slider{
+    display: none;
+}
 
 #search-detail-section #search .input input {
     width: 80%;
@@ -106,7 +110,7 @@ body {
 }
 
 #search-detail-section #search .input input::placeholder {
-    color: var(--grey);
+    color: var(--black);
 }
 
 #search-detail-section #search .input {

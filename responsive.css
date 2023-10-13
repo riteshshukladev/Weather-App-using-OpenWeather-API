@@ -57,12 +57,19 @@
     #search-detail-section {
         width: 100%;
         height: 10px;
-       
-            transition: height 0.5s ease; /* Add a transition for smooth height changes */
-        
+        transition: height 0.5s ease; 
+    backdrop-filter: blur(0px);
+    background-color: none;
+    position: relative;
+}
 
+#search-detail-section .slider{
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        cursor: pointer;
     }
-
     #search-detail-section #weather-details h6 {
 
         padding: 10px 0;
@@ -97,5 +104,22 @@
     }
     .tab{
         display:none;
+    }
+    h1 {
+        font-size: 70px;
+        font-weight: 500;
+    }
+    h2 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    h6 {
+        font-size: 18px;
+        font-weight: 400;
+    }
+    #search-detail-section #weather-details .details table {
+        
+        border-bottom: none;
     }
 }
