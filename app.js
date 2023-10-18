@@ -1,14 +1,89 @@
 // Call the setupCityListeners function once the page loads
+const apikey = "d0fa0e2fa5e7452f908c3a10bc16a9ec";
+
+
 document.addEventListener("DOMContentLoaded", () => {
   setupcityListner();
+  UserLocation();
 });
 
+async function UserLocation(){
+  const success=(pos)=>{
+    const latitude = pos.coords.latitude;
+    const longitude = pos.coords.longitude;
+    // console.log(latitude,longitude);
+    getCityname(latitude, longitude);
+    
+  }
+  const error=()=>{
+    document.querySelector('.error-area').style.display = "block";
+      document.querySelector('.error-area h5').innerHTML = "!Error Getting User location!";
 
+      setTimeout(() => {
+        document.querySelector('.error-area').style.display = "none"; // Change to "none" to hide the element
+      }, 3000);
+
+
+  }
+    navigator.geolocation.getCurrentPosition(success ,error);
+}
+
+async function getCityname(lat,lon){
+
+  try{
+  const api_key = 'd0fa0e2fa5e7452f908c3a10bc16a9ec';
+
+  var query = lat + ',' + lon;
+
+  var api_url = 'https://api.opencagedata.com/geocode/v1/json'
+
+  var request_url = api_url
+    + '?'
+    + 'key=' + api_key
+    + '&q=' + encodeURIComponent(query)
+    + '&pretty=1'
+    + '&no_annotations=1';
+
+   await getweather(lat,lon);
+
+    var request = new XMLHttpRequest();
+    request.open('GET', request_url, true);
+  
+    request.onload = function() {
+      
+  
+      if (request.status === 200){
+        // Success!
+        var data = JSON.parse(request.responseText);
+        // alert(data.results[0].formatted); // print the location
+        // console.log(data.results[0].components.state_district);
+        const locName = data.results[0].components.state_district  +" , "+ data.results[0].components.village;
+        const city_display = document.querySelector('.city').innerHTML = locName;
+      } else if (request.status <= 500){
+        // We reached our target server, but it returned an error
+  
+        console.log("unable to geocode! Response code: " + request.status);
+        var data = JSON.parse(request.responseText);
+        console.log('error msg: ' + data.status.message);
+      } else {
+        console.log("server error");
+      }
+    };
+  
+    request.onerror = function() {
+      // There was a connection error of some sort
+      console.log("unable to connect to server");
+    };
+  
+    request.send();
+  }
+  catch(error){
+    console.error(error);
+  }
+}
 
 // Getting the name of the city and passing the longitude and lattitude to the fetch the weather details//
-// const clickbtn = document.querySelector('.btn').addEventListener('click', loctnid);
-
-const city_input = document.querySelector('#input_city').addEventListener('input', ()=>{
+const city_input = document.querySelector('#input_city').addEventListener('input', (event)=>{
   clickbtn = document.querySelector('.btn').addEventListener('click', loctnid);
 });
 
@@ -22,7 +97,6 @@ function setupcityListner() {
 }
 async function selectionfromgivencities() {
   document.querySelector('#input_city').value = this.innerText;
-  const apikey = "d0fa0e2fa5e7452f908c3a10bc16a9ec";
   const city_name = this.innerText;
   await fetchCityWeather(apikey, city_name);
 
@@ -30,7 +104,6 @@ async function selectionfromgivencities() {
 
 
 async function loctnid() {
-  const apikey = "d0fa0e2fa5e7452f908c3a10bc16a9ec";
   const city_name = document.querySelector('#input_city').value;
   await fetchCityWeather(apikey, city_name);
 }

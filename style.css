@@ -9,22 +9,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-h1 {
-    font-size: 76px;
-    font-weight: 600;
-}
-
-h2 {
-    font-size: 28px;
-    font-weight: 600;
-}
-
-h6 {
-    font-size: 20px;
-    font-weight: 400;
-}
-
 body {
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
@@ -79,6 +63,10 @@ body {
 .main-content .city-and-time .day-and-time span {
     font-size: 16px;
     font-weight: 500;
+}
+.main-content .weather .weather-icons img{
+    height: 48px;
+    width: 48px;
 }
 
 /* Search section */
