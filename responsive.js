@@ -12,14 +12,14 @@ document.querySelector('.slider-up').addEventListener('click', () => {
 });
 
 document.querySelector('.slider-down').addEventListener('click', () => {
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 600) {
         const searchDetailElement = document.querySelector('#search-detail-section');
         searchDetailElement.style.height = '';
     }
 });
 
 function adjustElementsOnLoad() {
-    if (window.innerWidth <= 700 ) {
+    if (window.innerWidth <= 600 ) {
         const tabElement = document.querySelector('.tab');
         const searchDetailElement = document.querySelector('#search-detail-section');
 
@@ -29,7 +29,7 @@ function adjustElementsOnLoad() {
 }
 
 function adjustElementsOnClick() {
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 600) {
         const tabElement = document.querySelector('.tab');
         const searchDetailElement = document.querySelector('#search-detail-section');
 

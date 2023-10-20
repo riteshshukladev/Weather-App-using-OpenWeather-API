@@ -3,8 +3,8 @@ const apikey = "d0fa0e2fa5e7452f908c3a10bc16a9ec";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  setupcityListner();
   UserLocation();
+  setupcityListner();
 });
 
 async function UserLocation(){
@@ -25,7 +25,7 @@ async function UserLocation(){
 
 
   }
-    navigator.geolocation.getCurrentPosition(success ,error);
+  navigator.geolocation.getCurrentPosition(success ,error);
 }
 
 async function getCityname(lat,lon){
