@@ -74,7 +74,7 @@
         color: white;
         cursor: pointer;
         transition: all 0.5s ease;
-        
+        outline: none;
     }
     #search-detail-section .slider.rotate{
         transform: rotate(180deg);
