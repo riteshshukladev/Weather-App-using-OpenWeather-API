@@ -55,23 +55,29 @@
     }
 
     #search-detail-section {
-        width: 100%;
-        height: 10%;
+        width: 100vw;
+        height:15vh;
         transition: height 0.5s ease; 
     backdrop-filter: blur(0px);
     background-color: none;
     position: relative;
+    border-top: 1px solid white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 #search-detail-section .slider{
     display: block;
         position: absolute;
-        display: block;
         top: 0;
-        right: 0;
+        right: 50%;
         color: white;
         cursor: pointer;
+        transition: all 0.5s ease;
         
+    }
+    #search-detail-section .slider.rotate{
+        transform: rotate(180deg);
     }
     #search-detail-section #weather-details h6 {
 

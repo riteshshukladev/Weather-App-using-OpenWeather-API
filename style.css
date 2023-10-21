@@ -65,8 +65,8 @@ body {
     font-weight: 500;
 }
 .main-content .weather .weather-icons img{
-    height: inherit;
-    width: inherit;
+    height: 2.8rem;
+    width: 2.8rem;
 }
 
 /* Search section */
