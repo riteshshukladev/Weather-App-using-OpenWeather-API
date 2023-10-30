@@ -53,6 +53,10 @@
         margin-right: 0;
 
     }
+    #container #main-section .weather
+ {
+    margin-left: 0px;
+}
 
     #search-detail-section {
         width: 100vw;
