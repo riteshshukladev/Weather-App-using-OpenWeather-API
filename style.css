@@ -2,6 +2,9 @@
     --grey: rgb(106, 101, 101);
     --black:rgb(0, 0, 0);
 }
+* {
+    -webkit-tap-highlight-color: transparent;
+  }
 
 /* Utility class */
 * {
@@ -64,7 +67,10 @@ body {
     font-size: 16px;
     font-weight: 500;
 }
-
+#container #main-section .weather
+ {
+    margin-left: 10px;
+}
 /* Search section */
 #search-detail-section {
     width: 30%;
@@ -108,16 +114,6 @@ body {
 
 }
 
-#search-detail-section #search .error-area {
-    display: none;
-}
-
-#search-detail-section #search .error-area h5 {
-    color: rgb(185, 3, 3);
-    font-style: bold;
-    font-size: 20px;
-    font-weight: 500;
-}
 
 #search-detail-section #search .input span:hover {
     color: var(--grey);

@@ -16,13 +16,7 @@ async function UserLocation(){
     
   }
   const error=()=>{
-    document.querySelector('.error-area').style.display = "block";
-      document.querySelector('.error-area h5').innerHTML = "!Error Getting User location!";
-
-      setTimeout(() => {
-        document.querySelector('.error-area').style.display = "none"; // Change to "none" to hide the element
-      }, 3000);
-
+    alert('Error While Fetching User location!! please turn on your GPS Service')
 
   }
   navigator.geolocation.getCurrentPosition(success ,error);
@@ -55,30 +49,32 @@ async function getCityname(lat,lon){
       if (request.status === 200){
         // Success!
         var data = JSON.parse(request.responseText);
-        // alert(data.results[0].formatted); // print the location
-        // console.log(data.results[0].components.state_district);
-        const locName = data.results[0].components.state_district  +" , "+ data.results[0].components.village;
+       console.log(data)
+        const locName = data.results[0].components.state_district  + "," +  data.results[0].components.city;
         const city_display = document.querySelector('.city').innerHTML = locName;
       } else if (request.status <= 500){
         // We reached our target server, but it returned an error
   
         console.log("unable to geocode! Response code: " + request.status);
+        alert("unable to geocode! Response code: " + request.status);
         var data = JSON.parse(request.responseText);
         console.log('error msg: ' + data.status.message);
       } else {
         console.log("server error");
+        alert('server Error');
       }
     };
   
     request.onerror = function() {
-      // There was a connection error of some sort
-      console.log("unable to connect to server");
+
+      alert("unable to connect to server");
     };
   
     request.send();
   }
   catch(error){
-    console.error(error);
+  
+    alert(+error);
   }
 }
 
@@ -121,13 +117,8 @@ async function fetchCityWeather(apikey, city_name) {
       const city_display = document.querySelector('.city').innerHTML = city_name;
     })
     .catch(error => {
-      console.error('Error fetching data:', error);
-      document.querySelector('.error-area').style.display = "block";
-      document.querySelector('.error-area h5').innerHTML = "!!!Please enter a valid city name!!!";
-
-      setTimeout(() => {
-        document.querySelector('.error-area').style.display = "none"; // Change to "none" to hide the element
-      }, 3000);
+      alert('Error fetching data'+ error );
+     
     });
 }
 
@@ -142,7 +133,8 @@ async function getweather(latitude, longitude) {
         return response.json()
       }
       else {
-        console.error("error returned from server");
+  
+        alert("Error returned from server");
       }
     })
     .then(data => {
@@ -160,7 +152,8 @@ async function getweather(latitude, longitude) {
       updateDateTimeWithTimezone(data.timezone);
     })
     .catch(err => {
-      console.error("error fetching data", err);
+      console.error("error fetching data" + err);
+      alert("error fetching data" + err)
     })
 }
 
