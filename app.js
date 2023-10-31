@@ -50,7 +50,7 @@ async function getCityname(lat,lon){
         // Success!
         var data = JSON.parse(request.responseText);
        console.log(data)
-        const locName = data.results[0].components.state_district  + "," +  data.results[0].components.city;
+        const locName = data.results[0].components.state_district  + " , " +  data.results[0].components.country;
         const city_display = document.querySelector('.city').innerHTML = locName;
       } else if (request.status <= 500){
         // We reached our target server, but it returned an error
